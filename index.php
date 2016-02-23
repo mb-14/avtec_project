@@ -6,7 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
-    <title>Title</title>
+    <title>Facing & Centering M/c</title>
 
     <!-- Bootstrap -->
     <link href="css/bootstrap.min.css" rel="stylesheet">
@@ -29,13 +29,14 @@
            <span class="icon-bar"></span>
            <span class="icon-bar"></span>
          </button>
-         <a class="navbar-brand" href="#">Project name</a>
+         <a class="navbar-brand" href="#">Facing & Centering Machine</a>
        </div>
        <div id="navbar" class="navbar-collapse collapse">
          <ul class="nav navbar-nav">
-           <li class="active"><a href="#">Home</a></li>
-           <li><a href="#about">About</a></li>
-           <li><a href="#contact">Contact</a></li>
+           <li class="active"><a href="#">Record Event</a></li>
+           <li><a href="#analyse">Analyse Data</a></li>
+           <li><a href="#simulate">Simulate Machine</a></li>
+           <li><a href="#manual">Machine Manual</a></li>
          </ul>
        </div><!--/.nav-collapse -->
      </div>
@@ -59,7 +60,7 @@
             <h4>Select Job Type</h4>
             <div class="btn-group" data-toggle="buttons">
                <label class="btn btn-default active">
-                   <input type="radio" id="jt1" name="job_type" value="Normal" checked> Normal
+                   <input type="radio" id="jt1" name="job_type" value="Regular" checked> Regular
                </label>
                <label class="btn btn-default">
                    <input type="radio" id="jt2" name="job_type" value="Rework" > Rework
@@ -79,6 +80,9 @@
           </div>
              <button type="button" id ="job-button" class="btn btn-primary btn-lg">Start Event</button>
               <p>Duration : <span id = "job-duration">00:00:00</span></p>
+              <button type="button" id="analyse_job-button" class="btn btn-primary btn-lg" onclick="location='GMICamShaftPlot.php'">Analyse GMI Cam Shaft Cycle Times</button>
+              <button type="button" id="analyse_job-button" class="btn btn-primary btn-lg" onclick="location='NALTMainShaftPlot.php'">Analyse NALT Main Shaft Cycle Times</button>
+              <button type="button" id="analyse_job-button" class="btn btn-primary btn-lg" onclick="location='GMIMainShaftPlot.php'">Analyse GMI Main Shaft Cycle Times</button>
          </form>
       </div>
 
@@ -102,43 +106,62 @@
            <label class="btn btn-default">
                <input type="radio"  name="failed_unit" value="Power Unit" > Power Unit
            </label>
+           <label class="btn btn-default">
+               <input type="radio"  name="failed_unit" value="Coolant Unit" > Coolant Unit
+           </label>
+           <label class="btn btn-default">
+               <input type="radio"  name="failed_unit" value="Control Unit" > Control Unit
+           </label>
            </div>
            <h4>Mode of failure</h4>
            <div class="btn-group" data-toggle="buttons">
               <label class="btn btn-default active">
-                  <input type="radio" name="failure_mode" value="1" checked> 1
+                  <input type="radio" name="failure_mode" value="M/c Start-Stop Dysfunction" checked> M/c Start-Stop Dysfunction
               </label>
               <label class="btn btn-default">
-                  <input type="radio" name="failure_mode" value="2" > 2
+                  <input type="radio" name="failure_mode" value="Drilling Unit Dysfunction" > Drilling Unit Dysfunction
               </label>
               <label class="btn btn-default">
-                  <input type="radio" name="failure_mode" value="3" > 3
+                  <input type="radio" name="failure_mode" value="Milling Unit Dysfunction" > Milling Unit Dysfunction
               </label>
               <label class="btn btn-default">
-                  <input type="radio" name="failure_mode" value="4" > 4
+                  <input type="radio" name="failure_mode" value="MPCB/MCB Trip" > MPCB/MCB Trip
               </label>
               <label class="btn btn-default">
-                  <input type="radio" name="failure_mode" value="5" > 5
+                  <input type="radio" name="failure_mode" value="Clamp-Declamp Dysfunction" > Clamp-Declamp Dysfunction
+              </label>
+               <label class="btn btn-default">
+                  <input type="radio" name="failure_mode" value="Control Unit Dysfunction" > Control Unit Dysfunction
+              </label>
+               <label class="btn btn-default">
+                  <input type="radio" name="failure_mode" value="Coolant Unit Dysfunction" > Coolant Unit Dysfunction
+              </label>
+               <label class="btn btn-default">
+                  <input type="radio" name="failure_mode" value="Feed Unit Dysfunction" > Feed Unit Dysfunction
               </label>
           </div>
              <button type="button" id ="machine_failure-button" class="btn btn-primary btn-lg">Start Event</button>
              <p>Duration : <span id = "machine_failure-duration">00:00:00</span></p>
+             <button type="button" id="analyse_failure-button" class="btn btn-primary btn-lg" onclick="location='FailurePlot.php'">Analyse Past Failure</button>
       </form>
         </div>
             <div id="lunch_tea" class="tab-pane fade">
               <h3>Lunch/Tea</h3>
               <button type="button" id ="lunch_tea-button" class="btn btn-primary btn-lg">Start Event</button>
               <p>Duration : <span id = "lunch_tea-duration">00:00:00</span></p>
+              <button type="button" id="analyse_lunch_tea-button" class="btn btn-primary btn-lg" onclick="location='LunchTeaPlot.php'">Analyse Lunch/tea Times</button>
             </div>
             <div id="precautionary_check" class="tab-pane fade">
               <h3>Precautionary Check</h3>
               <button type="button" id ="precautionary_check-button" class="btn btn-primary btn-lg">Start Event</button>
               <p>Duration : <span id = "precautionary_check-duration">00:00:00</span></p>
+              <button type="button" id="analyse_job-button" class="btn btn-primary btn-lg" onclick="location='PrecautionaryCheckPlot.php'">Analyse Precautionary Check Times</button>
             </div>
             <div id="pm" class="tab-pane fade">
               <h3>Preventive Maintenance</h3>
             <button type="button" id ="pm-button" class="btn btn-primary btn-lg">Start Event</button>
             <p>Duration : <span id = "pm-duration">00:00:00</span></p>
+            <button type="button" id="analyse_job-button" class="btn btn-primary btn-lg" onclick="location='PreventiveMaintenancePlot.php'">Analyse PM Times</button>
             </div>
             <div id="setup_change" class="tab-pane fade">
               <h3>Setup Change</h3>
@@ -224,8 +247,7 @@
             </div>
 
       </div>
-    </div>
-
+    </div>>
     <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
     <!-- Include all compiled plugins (below), or include individual files as needed -->
